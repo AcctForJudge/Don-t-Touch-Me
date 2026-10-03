@@ -6,4 +6,4 @@ WASD / Arrow Keys - Movement
 
 R - Reset
 
-[https://itch.io/jam/dattel-kit-gamejam/rate/5096335]
+Submission: https://itch.io/jam/dattel-kit-gamejam/rate/5096335
