@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dmy7i6rdgekcc"]
+
+[ext_resource type="Texture2D" uid="uid://576gqgcongku" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d1.png" id="1_jqfqo"]
+[ext_resource type="Texture2D" uid="uid://4p8meqmjhp6o" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d2.png" id="2_weid3"]
+[ext_resource type="Texture2D" uid="uid://ktqab8fxibwv" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d3.png" id="3_rklvy"]
+[ext_resource type="Texture2D" uid="uid://c7arjh15sljbl" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d4.png" id="4_2mtg1"]
+[ext_resource type="Texture2D" uid="uid://57ffj4jgeerw" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d5.png" id="5_n2edj"]
+[ext_resource type="Texture2D" uid="uid://xogydtcfd37g" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d6.png" id="6_nrppg"]
+[ext_resource type="Texture2D" uid="uid://b6gqu2edgee03" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d7.png" id="7_xude8"]
+[ext_resource type="Texture2D" uid="uid://blgq7jwbhvpod" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d8.png" id="8_o46lq"]
+[ext_resource type="Texture2D" uid="uid://bd42iyhvdr7j" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d9.png" id="9_wno0d"]
+[ext_resource type="Texture2D" uid="uid://ca2120ngryw0m" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d10.png" id="10_4rh5m"]
+[ext_resource type="Texture2D" uid="uid://cnklxvvjxr880" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d11.png" id="11_hdpvk"]
+[ext_resource type="Texture2D" uid="uid://drcqno6cpgcfi" path="res://Assets/explosion pack 1/Explosions pack/explosion-1-d/Sprites/explosion-d12.png" id="12_144i1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jqfqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_weid3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rklvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2mtg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n2edj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nrppg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xude8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o46lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wno0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4rh5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hdpvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_144i1")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D" unique_id=684833379]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1vivr")

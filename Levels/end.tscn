@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://civpy4lsvqq4r"]
+
+[ext_resource type="FontFile" uid="uid://1u3dwfx3b0x6" path="res://Assets/ARCADECLASSIC.TTF" id="1_jh32d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_1vivr"]
+base_font = ExtResource("1_jh32d")
+
+[node name="End" type="Control" unique_id=1178803843]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=387966011]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1122002273]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -401.0
+offset_top = -120.0
+offset_right = 401.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_1vivr")
+theme_override_font_sizes/font_size = 72
+text = "🎊!WOOO YOU DID IT!🎊"
+horizontal_alignment = 1
+vertical_alignment = 1

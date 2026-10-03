@@ -1,0 +1,148 @@
+[gd_scene format=4 uid="uid://dumauik42m5am"]
+
+[ext_resource type="Script" uid="uid://qpo1jrfehb40" path="res://Levels/start.gd" id="1_0gj51"]
+[ext_resource type="Texture2D" uid="uid://bpk0qylovkqdg" path="res://Assets/tiles.png" id="1_qaiq8"]
+[ext_resource type="Texture2D" uid="uid://bjgvb6d304oc0" path="res://Assets/enemy.png" id="2_dwcwo"]
+[ext_resource type="Texture2D" uid="uid://co6xuuetol8fv" path="res://Assets/player.png" id="3_0gj51"]
+[ext_resource type="Texture2D" uid="uid://c71qlxsy2b6im" path="res://Assets/vs.png" id="4_w8vuo"]
+[ext_resource type="FontFile" uid="uid://1u3dwfx3b0x6" path="res://Assets/ARCADECLASSIC.TTF" id="5_dwcwo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0qdby"]
+texture = ExtResource("1_qaiq8")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uc7op"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_0qdby")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vrlf"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.7176471)
+
+[sub_resource type="FontVariation" id="FontVariation_kp4sl"]
+base_font = ExtResource("5_dwcwo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5gy4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8vuo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwcwo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Start" type="Control" unique_id=251998472]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0gj51")
+
+[node name="bg" type="Control" parent="." unique_id=1609453233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="bg" unique_id=1632013308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="bg" unique_id=798906815]
+tile_map_data = PackedByteArray("AAADAAMAAQABAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQABAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQABAAAAAAAJAAUAAQABAAAAAAAKAAUAAQABAAAAAAALAAUAAQABAAAAAAALAAMAAQAAAAAAAAAKAAMAAQABAAAAAAAJAAMAAQABAAAAAAAIAAMAAQAAAAAAAAAHAAMAAQABAAAAAAAEAAIAAQABAAAAAAADAAQAAQABAAAAAAADAAIAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQABAAAAAAAEAAQAAQABAAAAAAAEAAUAAQABAAAAAAAFAAIAAQABAAAAAAAFAAQAAQABAAAAAAAFAAUAAQABAAAAAAAGAAIAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAIAAQABAAAAAAAHAAUAAQAAAAAAAAAIAAIAAQABAAAAAAAIAAUAAQAAAAAAAAAJAAIAAQAAAAAAAAAKAAIAAQABAAAAAAAKAAQAAQABAAAAAAALAAIAAQABAAAAAAALAAYAAQABAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAcAAQAAAAAAAAACAAcAAQAAAAAAAAACAAYAAQABAAAAAAACAAUAAQABAAAAAAACAAQAAQACAAAAAAACAAMAAQABAAAAAAACAAIAAQABAAAAAAACAAEAAQAAAAAAAAALAAQAAQABAAAAAAAKAAYAAQABAAAAAAAEAAYAAQABAAAAAAAFAAYAAQABAAAAAAAGAAYAAQABAAAAAAAHAAYAAQABAAAAAAAIAAYAAQABAAAAAAAJAAYAAQABAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAQAAAAAAAAAMAAIAAQABAAAAAAAMAAMAAQABAAAAAAAMAAQAAQADAAAAAAAMAAUAAQABAAAAAAAMAAYAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAANAAEAAQAAAAAAAAANAAIAAQAAAAAAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_uc7op")
+
+[node name="TextureRect" type="TextureRect" parent="bg" unique_id=1978064980]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 179.0
+offset_right = 820.0
+offset_bottom = 379.0
+texture = ExtResource("2_dwcwo")
+
+[node name="TextureRect2" type="TextureRect" parent="bg" unique_id=459918560]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 183.0
+offset_right = 354.0
+offset_bottom = 383.0
+texture = ExtResource("3_0gj51")
+
+[node name="TextureRect3" type="TextureRect" parent="bg" unique_id=935162371]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 156.0
+offset_right = 603.0
+offset_bottom = 356.0
+texture = ExtResource("4_w8vuo")
+
+[node name="Panel2" type="Panel" parent="." unique_id=359319021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8vrlf")
+
+[node name="Button" type="Button" parent="." unique_id=1483094086]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 260.0
+offset_right = 606.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_kp4sl")
+theme_override_font_sizes/font_size = 49
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5gy4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w8vuo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dwcwo")
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

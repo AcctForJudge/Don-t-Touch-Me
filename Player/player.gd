@@ -1,23 +1,37 @@
+@tool
 class_name Player
 extends Node2D
 
 signal collided
+signal completed
+
+const ENEMY = preload("uid://bjgvb6d304oc0")
+const PLAYER = preload("uid://co6xuuetol8fv")
+const MOVE = preload("uid://cpeu6cd0yy42l")
 
 @export var enemy: bool = false
 @export var partner: Player
-@export var colour: Color = Color.WHITE
+@export var goal: Checkpoint
+
+
 var tile_size: int = 64
 var inputs = {"right": Vector2.RIGHT, "left": Vector2.LEFT,
 			  "up": Vector2.UP, "down": Vector2.DOWN}
 var moving: bool = false
+var complete := false
+var game: Game
 @onready var ray: RayCast2D = $RayCast2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready():
+	sprite_2d.texture = ENEMY if enemy else PLAYER
 	snap()
-	sprite_2d.modulate = colour
+	game = get_parent().get_parent().get_parent()
 
 func _unhandled_input(event):
+	if not game.started:
+		return
 	if moving:
 		return
 	if enemy:
@@ -30,9 +44,14 @@ func _unhandled_input(event):
 func wall_moves(d: Vector2) -> int:
 	ray.target_position = d * tile_size * 1000
 	ray.force_raycast_update()
-	if not ray.is_colliding():
+	if not ray.is_colliding() or complete:
 		return 0
-	return floori((ray.get_collision_point() - global_position).dot(d) / tile_size)
+	var m := floori((ray.get_collision_point() - global_position).dot(d) / tile_size)
+	if goal:
+		var rel := goal.global_position - global_position
+		if absf(rel.cross(d)) < 1.0 and rel.dot(d) > 0:  # goal is ahead on this line
+			m = mini(m, roundi(rel.dot(d) / tile_size))
+	return m
 
 func step(dir: String):
 	var d1: Vector2 = inputs[dir]
@@ -43,15 +62,15 @@ func step(dir: String):
 	var rel := partner.position - position
 	if absf(rel.cross(d1)) < 1.0:  # same row/column
 		var n := roundi(rel.dot(d1) / tile_size)  # signed tiles from me to partner along d1
-		if d1.x != 0:  # opposite directions
-			if n > 0:  # converging
-				var free := n - 1
-				var a := mini(m1, ceili(free / 2.0))
-				var b := mini(m2, free - a)
-				m1 = mini(m1, free - b)
-				m2 = b
-				if not enemy:
-					collided.emit()
+		if n > 0:  # converging
+			var free := n - 1
+			var met := m1 + m2 >= free  # no wall stops them before they meet
+			var a := mini(m1, ceili(free / 2.0))
+			var b := mini(m2, free - a)
+			m1 = mini(m1, free - b)
+			m2 = b
+			if met and not enemy:
+				collided.emit()
 		else:  # same direction: follower stops behind leader
 			if n > 0:
 				m1 = mini(m1, m2 + n - 1)
@@ -64,6 +83,19 @@ func step(dir: String):
 func tween_to(pos: Vector2):
 	await create_tween().tween_property(self, "position", pos, 0.25).finished
 	moving = false
-	
+	play(MOVE)
+	if goal and position.is_equal_approx(goal.global_position):
+		complete = true
+		completed.emit()
+
 func snap():
 	position = position.snapped(Vector2.ONE * tile_size) + Vector2.ONE * tile_size / 2
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area == goal:
+		complete = true
+		completed.emit()
+
+func play(sound):
+	audio_stream_player.stream = sound
+	audio_stream_player.play()
