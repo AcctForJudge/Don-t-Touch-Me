@@ -26,3 +26,4 @@ func _on_start_start() -> void:
 
 func _on_level_manager_game_ended() -> void:
 	end.show()
+	$AudioStreamPlayer.play()

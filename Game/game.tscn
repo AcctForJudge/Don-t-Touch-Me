@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfanp1ik321dm" path="res://Levels/level_4.tscn" id="6_buohc"]
 [ext_resource type="PackedScene" uid="uid://cfw5bkppw3rsu" path="res://Levels/level_5.tscn" id="7_kul4i"]
 [ext_resource type="PackedScene" uid="uid://civpy4lsvqq4r" path="res://Levels/end.tscn" id="7_oomkl"]
+[ext_resource type="AudioStream" uid="uid://b686733juuoug" path="res://Assets/Sound/win.mp3" id="10_7gi1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
 bg_color = Color(0, 0, 0, 1)
@@ -35,6 +36,7 @@ scenes = Array[PackedScene]([ExtResource("1_1r4le"), ExtResource("4_jcm6v"), Ext
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=884848529]
+stream = ExtResource("10_7gi1t")
 
 [connection signal="game_ended" from="LevelManager" to="." method="_on_level_manager_game_ended"]
 [connection signal="players_collided" from="LevelManager" to="." method="_on_level_manager_players_collided"]

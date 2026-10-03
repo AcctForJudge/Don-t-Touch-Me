@@ -50,7 +50,6 @@ func ray_moves(d: Vector2) -> int:
 	return floori((ray.get_collision_point() - global_position).dot(d) / tile_size)
 
 func wall_moves(d: Vector2) -> int:
-	print(name, " goal=", goal, " pos=", global_position, " goalpos=", goal.global_position if goal else "none")
 	if complete:
 		return 0
 	var m := ray_moves(d)
