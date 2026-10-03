@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cdx5dsi3a36mw"]
+
+[ext_resource type="PackedScene" uid="uid://belbfx6envih8" path="res://Levels/level_1/level_1.tscn" id="1_1r4le"]
+[ext_resource type="Script" uid="uid://d23bbbu4jxur5" path="res://Game/game.gd" id="1_7raqb"]
+[ext_resource type="Script" uid="uid://42d2rwt48aki" path="res://Levels/level_manager.gd" id="2_jcm6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node2D" unique_id=2000274370]
+script = ExtResource("1_7raqb")
+
+[node name="Panel" type="Panel" parent="." unique_id=184489790]
+offset_left = -1082.0
+offset_top = -641.0
+offset_right = 1779.0
+offset_bottom = 1265.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
+
+[node name="LevelManager" type="Node2D" parent="." unique_id=1600996033]
+script = ExtResource("2_jcm6v")
+scene = ExtResource("1_1r4le")
+
+[connection signal="players_collided" from="LevelManager" to="." method="_on_level_manager_players_collided"]
