@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qe8cnuj7aslp" path="res://Player/player.tscn" id="3_fbld2"]
 [ext_resource type="PackedScene" uid="uid://bca5aec5hvf0j" path="res://Win Check/checkpoint.tscn" id="4_s275v"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ptcm3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgq3b"]
 texture = ExtResource("2_bcgyv")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -17,7 +17,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_1vivr"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_ptcm3")
+sources/1 = SubResource("TileSetAtlasSource_dgq3b")
 
 [node name="Level 2" type="Node2D" unique_id=940097521 node_paths=PackedStringArray("p1", "p2")]
 script = ExtResource("1_dgq3b")
@@ -31,12 +31,12 @@ tile_map_data = PackedByteArray("AAADAAMAAQABAAAAAAAEAAMAAQABAAAAAAAFAAMAAQABAAA
 tile_set = SubResource("TileSet_1vivr")
 
 [node name="Player1" parent="." unique_id=923044811 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_fbld2")]
-position = Vector2(222, 273)
+position = Vector2(206, 275)
 partner = NodePath("../Player2")
 goal = NodePath("../Checkpoint2")
 
 [node name="Player2" parent="." unique_id=1740088470 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_fbld2")]
-position = Vector2(720, 269)
+position = Vector2(721, 281)
 enemy = true
 partner = NodePath("../Player1")
 goal = NodePath("../Checkpoint")

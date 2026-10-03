@@ -35,6 +35,8 @@ func _on_player_2_completed() -> void:
 	
 func check_completed():
 	if p1_c and p2_c:
+		p1_c = false
+		p2_c = false
 		completed.emit()
 		
 func get_mid_point() -> Vector2:

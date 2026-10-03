@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dumauik42m5am" path="res://Levels/start.tscn" id="3_qmv3x"]
 [ext_resource type="PackedScene" uid="uid://cogky6sqgwypp" path="res://Levels/level_2.tscn" id="4_jcm6v"]
 [ext_resource type="PackedScene" uid="uid://bf73avrv8yg8b" path="res://Levels/level_3.tscn" id="5_fwxkx"]
+[ext_resource type="PackedScene" uid="uid://bfanp1ik321dm" path="res://Levels/level_4.tscn" id="6_buohc"]
 [ext_resource type="PackedScene" uid="uid://civpy4lsvqq4r" path="res://Levels/end.tscn" id="7_oomkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
@@ -23,7 +24,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
 
 [node name="LevelManager" type="Node2D" parent="." unique_id=1600996033]
 script = ExtResource("2_jcm6v")
-scenes = Array[PackedScene]([ExtResource("1_1r4le"), ExtResource("4_jcm6v"), ExtResource("5_fwxkx")])
+scenes = Array[PackedScene]([ExtResource("6_buohc"), ExtResource("1_1r4le"), ExtResource("4_jcm6v"), ExtResource("5_fwxkx")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2034555518]
 
