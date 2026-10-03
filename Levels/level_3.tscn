@@ -31,21 +31,21 @@ tile_map_data = PackedByteArray("AAADAAMAAQAAAAAAAAAEAAMAAQABAAAAAAAFAAMAAQABAAA
 tile_set = SubResource("TileSet_1vivr")
 
 [node name="Player1" parent="." unique_id=923044811 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_uwxw1")]
-position = Vector2(216, 272)
+position = Vector2(214, 267)
 partner = NodePath("../Player2")
 goal = NodePath("../Checkpoint2")
 
 [node name="Player2" parent="." unique_id=1740088470 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_uwxw1")]
-position = Vector2(715, 262)
+position = Vector2(718, 266)
 enemy = true
 partner = NodePath("../Player1")
 goal = NodePath("../Checkpoint")
 
 [node name="Checkpoint" parent="." unique_id=236685198 instance=ExtResource("4_ay5qi")]
-position = Vector2(284, 286)
+position = Vector2(288, 289)
 
 [node name="Checkpoint2" parent="." unique_id=1831825966 instance=ExtResource("4_ay5qi")]
-position = Vector2(665, 271)
+position = Vector2(672, 288)
 
 [connection signal="collided" from="Player1" to="." method="_on_player_1_collided"]
 [connection signal="completed" from="Player1" to="." method="_on_player_1_completed"]

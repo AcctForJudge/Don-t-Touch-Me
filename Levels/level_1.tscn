@@ -36,7 +36,7 @@ partner = NodePath("../Player2")
 goal = NodePath("../Checkpoint2")
 
 [node name="Player2" parent="." unique_id=1740088470 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("2_c5jsv")]
-position = Vector2(729, 267)
+position = Vector2(717, 267)
 enemy = true
 partner = NodePath("../Player1")
 goal = NodePath("../Checkpoint")
@@ -45,7 +45,7 @@ goal = NodePath("../Checkpoint")
 position = Vector2(160, 288)
 
 [node name="Checkpoint2" parent="." unique_id=1831825966 instance=ExtResource("4_gp5v8")]
-position = Vector2(800, 289)
+position = Vector2(800, 288)
 
 [connection signal="collided" from="Player1" to="." method="_on_player_1_collided"]
 [connection signal="completed" from="Player1" to="." method="_on_player_1_completed"]

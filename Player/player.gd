@@ -1,4 +1,3 @@
-@tool
 class_name Player
 extends Node2D
 
@@ -51,13 +50,14 @@ func ray_moves(d: Vector2) -> int:
 	return floori((ray.get_collision_point() - global_position).dot(d) / tile_size)
 
 func wall_moves(d: Vector2) -> int:
+	print(name, " goal=", goal, " pos=", global_position, " goalpos=", goal.global_position if goal else "none")
 	if complete:
 		return 0
 	var m := ray_moves(d)
 	var gm := 999
 	if goal:
 		var rel := goal.global_position - global_position
-		if absf(rel.cross(d)) < 1.0 and rel.dot(d) > 0:
+		if absf(rel.cross(d)) < tile_size * 0.25 and rel.dot(d) > 0:
 			gm = roundi(rel.dot(d) / tile_size)
 	m = mini(m, gm)
 	return 0 if m >= 999 else m
@@ -84,7 +84,7 @@ func step(dir: String):
 				m2 = b
 				if met and not enemy:
 					play(EXPLOSION, 20)
-				collided.emit()
+					collided.emit()
 		else:  # same direction: follower stops behind leader
 			if n > 0:
 				m1 = mini(m1, m2 + n - 1)
@@ -98,7 +98,7 @@ func tween_to(pos: Vector2):
 	play(MOVE, -20)
 	await create_tween().tween_property(self, "position", pos, 0.25).finished
 	moving = false
-	if goal and position.is_equal_approx(goal.global_position):
+	if goal and not complete and global_position.distance_to(goal.global_position) < tile_size * 0.25:
 		complete = true
 		play(CHECK)
 		completed.emit()
@@ -109,7 +109,7 @@ func snap():
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 	#if area == goal:
 		#complete = true
-		#
+		#play(CHECK)
 		#completed.emit()
 
 func play(sound, db = 0.0):

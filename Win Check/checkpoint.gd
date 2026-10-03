@@ -4,8 +4,8 @@ extends Area2D
 
 
 ## Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	position = position.snapped(Vector2.ONE * 64) + Vector2.ONE * 32
+#func _ready() -> void:
+	#position = position.snapped(Vector2.ONE * 64) + Vector2.ONE * 32
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

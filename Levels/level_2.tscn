@@ -42,10 +42,10 @@ partner = NodePath("../Player1")
 goal = NodePath("../Checkpoint")
 
 [node name="Checkpoint" parent="." unique_id=236685198 instance=ExtResource("4_s275v")]
-position = Vector2(160, 174)
+position = Vector2(160, 160)
 
 [node name="Checkpoint2" parent="." unique_id=1831825966 instance=ExtResource("4_s275v")]
-position = Vector2(823, 158)
+position = Vector2(801, 160)
 
 [connection signal="collided" from="Player1" to="." method="_on_player_1_collided"]
 [connection signal="completed" from="Player1" to="." method="_on_player_1_completed"]

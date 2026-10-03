@@ -1,0 +1,52 @@
+[gd_scene format=4 uid="uid://cfw5bkppw3rsu"]
+
+[ext_resource type="Script" uid="uid://t0ycqm2rj70b" path="res://Levels/level.gd" id="1_br4so"]
+[ext_resource type="Texture2D" uid="uid://bpk0qylovkqdg" path="res://Assets/tiles.png" id="2_8ons7"]
+[ext_resource type="PackedScene" uid="uid://qe8cnuj7aslp" path="res://Player/player.tscn" id="3_tac4s"]
+[ext_resource type="PackedScene" uid="uid://bca5aec5hvf0j" path="res://Win Check/checkpoint.tscn" id="4_qhsfq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgq3b"]
+texture = ExtResource("2_8ons7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1vivr"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_dgq3b")
+
+[node name="Level 5" type="Node2D" unique_id=940097521 node_paths=PackedStringArray("p1", "p2")]
+script = ExtResource("1_br4so")
+p1 = NodePath("Player1")
+p2 = NodePath("Player2")
+
+[node name="Tiles" type="Node2D" parent="." unique_id=519066339]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tiles" unique_id=580242283]
+tile_map_data = PackedByteArray("AAADAAMAAQABAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQABAAAAAAAGAAMAAQABAAAAAAAGAAQAAQACAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQADAAAAAAAJAAQAAQABAAAAAAAJAAUAAQABAAAAAAALAAUAAQABAAAAAAALAAMAAQABAAAAAAAKAAMAAQABAAAAAAAJAAMAAQABAAAAAAAIAAMAAQABAAAAAAAEAAIAAQABAAAAAAADAAQAAQABAAAAAAADAAIAAQABAAAAAAADAAUAAQABAAAAAAADAAYAAQAAAAAAAAAEAAQAAQABAAAAAAAEAAUAAQABAAAAAAAFAAIAAQABAAAAAAAFAAQAAQABAAAAAAAFAAUAAQABAAAAAAAGAAIAAQABAAAAAAAGAAUAAQABAAAAAAAHAAIAAQABAAAAAAAHAAUAAQABAAAAAAAIAAIAAQAAAAAAAAAIAAUAAQABAAAAAAAJAAIAAQABAAAAAAAKAAIAAQABAAAAAAAKAAQAAQABAAAAAAALAAIAAQABAAAAAAALAAYAAQABAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAcAAQAAAAAAAAACAAcAAQAAAAAAAAACAAYAAQABAAAAAAACAAUAAQAAAAAAAAACAAQAAQABAAAAAAACAAMAAQABAAAAAAACAAIAAQABAAAAAAACAAEAAQAAAAAAAAALAAQAAQABAAAAAAAKAAYAAQABAAAAAAAEAAYAAQABAAAAAAAFAAYAAQABAAAAAAAGAAYAAQABAAAAAAAHAAYAAQABAAAAAAAIAAYAAQABAAAAAAAJAAYAAQABAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAQAAAAAAAAAMAAIAAQABAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQABAAAAAAAMAAUAAQABAAAAAAAMAAYAAQABAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAANAAEAAQAAAAAAAAANAAIAAQAAAAAAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAAHAAMAAQABAAAAAAAKAAUAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_1vivr")
+
+[node name="Player1" parent="." unique_id=923044811 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_tac4s")]
+position = Vector2(348, 264)
+partner = NodePath("../Player2")
+goal = NodePath("../Checkpoint2")
+
+[node name="Player2" parent="." unique_id=1740088470 node_paths=PackedStringArray("partner", "goal") instance=ExtResource("3_tac4s")]
+position = Vector2(606, 270)
+enemy = true
+partner = NodePath("../Player1")
+goal = NodePath("../Checkpoint")
+
+[node name="Checkpoint" parent="." unique_id=236685198 instance=ExtResource("4_qhsfq")]
+position = Vector2(416, 288)
+
+[node name="Checkpoint2" parent="." unique_id=1831825966 instance=ExtResource("4_qhsfq")]
+position = Vector2(544, 288)
+
+[connection signal="collided" from="Player1" to="." method="_on_player_1_collided"]
+[connection signal="completed" from="Player1" to="." method="_on_player_1_completed"]
+[connection signal="completed" from="Player2" to="." method="_on_player_2_completed"]
